@@ -2,18 +2,6 @@
 
 An event-driven pipeline that I built on Google Cloud: files dropped into Cloud Storage trigger a Cloud Function that loads them into BigQuery, a second Cloud Function serves house-price predictions, and a Streamlit app drives the whole flow end to end.
 
-## Architecture
-
-```mermaid
-flowchart LR
-    A[Streamlit app] -- "NDJSON upload" --> B[(Cloud Storage bucket)]
-    B -- "object.finalized event (Eventarc)" --> C[Cloud Function<br/>housing-etl]
-    C -- "load job" --> D[(BigQuery<br/>staging.housing_listings<br/>staging.price_predictions)]
-    A -- "SQL queries" --> D
-    A -- "POST features" --> E[Cloud Function<br/>housing-price-predict]
-    E -- "prediction" --> A
-    A -- "log prediction as NDJSON" --> B
-```
 
 1. The app (or `gsutil cp`) uploads a newline-delimited JSON file to the bucket.
 2. The `finalized` event triggers `housing-etl`. The function picks the destination table by filename prefix (`housing_listings_*` or `price_predictions_*`), creates the table from `schemas.yaml` if needed, and appends the rows.
