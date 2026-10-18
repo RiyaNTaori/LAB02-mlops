@@ -39,10 +39,10 @@ For Path B you need two zip files for the function editors. Create them from the
 ### A1. Open Cloud Shell and get the code
 
 1. Click the **Activate Cloud Shell** icon (`>_`) at the top-right of the console. A terminal opens at the bottom.
-2. Clone the repository (replace the URL with this repository's URL):
+2. Clone the repository:
 
 ```bash
-cd ~ && git clone https://github.com/<your-github-username>/<repo-name>.git housing_lab && cd housing_lab && ls
+cd ~ && git clone https://github.com/RiyaNTaori/LAB02-mlops.git housing_lab && cd housing_lab && ls
 ```
 
 You should see `etl_function  ml_function  streamlit_app  scripts  data  docs  deploy.sh  README.md`.
