@@ -30,7 +30,8 @@ An event-driven pipeline that I built on Google Cloud: files dropped into Cloud 
 
 - **Algorithm:** `HistGradientBoostingRegressor` (300 iterations, learning rate 0.1)
 - **Target:** median house value in USD
-- **Hold-out performance (20% test split):** R² ≈ 0.85, MAE ≈ $29k
+- **Hold-out performance (20% test split):** R² ≈ 0.89
+- , MAE ≈ $29k
 - **Artifact:** `ml_function/model.joblib` (~1 MB), bundled with the function so cold starts don't need to retrain
 
 **Feature order** (send either a list in this order or an object with these keys):
